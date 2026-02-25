@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning  HTML</HTML></title>
+</head>
+<body style="background-color: beige;">
+    <h1>Header text h1-h6</h1>
+    <h2>Lorem ipsum. >br< below for break line</h2>
+    <br>
+    <h3>Lorem ipsum</h3>
+    <h4>Lorem ipsum</h4>
+    <h5>Lorem ipsum</h5>
+    <h6>Lorem ipsum</h6>
+
+    <a href="https://www.google.com" target="_self" title="This is a link.">Google link</a>
+    <br>
+    <a href="./test.html" target="_self">Link to a different html</a>
+    <br>
+    <a href="test.html">
+    <img src="test_images/cat.jpg" alt="catto1" title="meow">
+    </a>
+    <img src="test_images/cat1.jpeg" width="180" height="235" alt="catto2" title="mooow">
+    <img src="test_images/cat2.jpg" alt="catto3" title="ble">
+
+    <audio controls muted src="test_audio/SAIKAI.mp3"></audio>
+    <audio controls muted src="test_audio/TIANTIAN.mp3"></audio>
+    <video controls muted src="test_vid/cat.mp4" height="300" width="300"></video>
+
+    <p>Lorem ipsum text text</p>
+    <p>Lorem ipsum >b< <b>bold</b> text</p>
+    <p>Lorem ipsum >i< <i>italic</i> text</p>
+    <p>Lorem ipsum >big< <big>big</big> text</p>
+    <p>Lorem ipsum >small< <small>small</small> text</p>
+    <p>Lorem ipsum >sub< <sub>subscript</sub> text</p>
+    <p>Lorem ipsum >sup< <sup>superscript</sup> text</p>
+    <p>Lorem ipsum >ins< <ins>inserted</ins> text</p>
+    <p>Lorem ipsum >del< <del>deleted</del> text</p>
+    <p>Lorem ipsum >mark< <mark>marked</mark> text</p>
+    <p>Lorem ipsum text text</p>
+
+    <h4>Unordered Lists</h4>
+    <ul>
+        <li>one</li>
+            <ul>
+                <li>five</li>
+            </ul>
+        <li>two</li>
+        <li>three</li>
+        <li>four</li>
+    </ul>
+    <h4>Ordered List</h4>
+    <ol type="i">
+        <li>four</li>
+            <ol type="A">
+                <li>five</li>
+            </ol>
+        <li>three</li>
+        <li>two</li>
+        <li>one</li>
+    </ol>
+    <h4>Description List</h4>
+    <dl>
+        <dt>Word</dt>
+        <dd>Meaning</dd>
+        <dd>Meaning two</dd>
+    </dl>
+
+    <h4>Table</h4>
+    <table bgcolor="black" width="500">
+        <tr bgcolor="grey">
+            <th width="100">Table Header</th>
+            <th>headd</th>
+            <th>headdd</th>
+            <th>headddd</th>
+        </tr>
+        <tr bgcolor="aqua" align="center">
+            <td>Table data</td>
+            <td>no</td>
+            <td>yes</td>
+            <td>no</td>
+        </tr>
+    </table>
+
+    <div style="font-family: sans-serif;">
+    <p><span style="font-style: oblique;">Lorem ipsum dolor sit amet</span>, consectetur adipiscing elit.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+
+    <meta name="description" content="bunga">
+    <meta name="keywords" content="monkey">
+
+    <iframe src="https://www.bing.com"></iframe>
+
+    <button onclick="doSmthn()">
+        press
+    </button>
+    <p id="test">yahoo</p>
+    <script>
+        function doSmthn(){
+            document.getElementById("test").innerHTML = "Goodbye.";
+        }
+    </script>
+
+    <form>
+        <label for="testing">Type words:</label>
+        <input type="text" id="testing" name="testing" placeholder="gigatron">
+        <input type="reset">
+        <input type="submit">
+        <select id="goods" name="goods">
+            <option value="one">one</option>
+            <option value="two">two</option>
+            <option value="three">three</option>
+        </select>
+    </form>
+</body>
+</html>
