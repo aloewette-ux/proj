@@ -11,28 +11,283 @@
             <img src="./assets/limbus_logo.webp" alt="Project Moon Logo" id="header-logo">
         <nav>
             <ul id="nav-bar">
-                <a href="#home"><li>HOME</li></a>
-                <a href="#news"><li>NEWS</li></a>
-                <a href="#characters"><li>CHARACTERS</li></a>
-                <a href="#lore"><li>LORE</li></a>
+                <a href="#home"><li class="nav-list">HOME</li></a>
+                <a href="#news"><li class="nav-list">NEWS</li></a>
+                <a href="#characters"><li class="nav-list">CHARACTERS</li></a>
+                <a href="#lore"><li class="nav-list">LORE</li></a>
             </ul>
         </nav>
     </header>
     <main class="container">
         <section id="home">
             <video src="./assets/limbus.mp4" type="video/mp4" id="background-video" autoplay muted loop></video>
+            <div class="scroll-indicator">
+                <video src="./assets/scroll_arrow.webm" type="video/webm" id="scroll-arrow" autoplay loop></video>
+            </div>
         </section>
         <div id="background-image">
-            <section id="news">
+        <section id="news">
+            <div class="news-container">
+                <h3>NEWS</h3>
+                <hr>
+                <div class="news-gallery-container">
+                    <div class="news-gallery">
+                        <div class="slide">
+                            <a href="https://youtu.be/MLju5RoKqCg" class="link"><img src="./assets/anniv.jpg" alt="Image 1"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="https://youtu.be/WF5wvJjEwVU" class="link"><img src="./assets/index.webp" alt="Image 2"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="https://youtu.be/0HXwT4gefnQ" class="link"><img src="./assets/lamp.webp" alt="Image 3"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="https://youtu.be/0HXwT4gefnQ" class="link"><img src="./assets/pinky.webp" alt="Image 4"></a>
+                        </div>
+                        <div class="slide">
+                            <a href="https://youtu.be/MLju5RoKqCg" class="link"><img src="./assets/anniv.jpg" alt="Image 1"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="news-articles">
+                    <h4>Latest</h4>
+                    <div class="articles">
+                    <ul>
+                        <a href="https://store.steampowered.com/news/app/1973530/view/493843352938088699?l=english" class="link"><li class="latest">[New Content] Mirror of Names and Spiders</a><span>Feb 26, 2026</span></sub></li>
+                        <a href="https://youtu.be/MLju5RoKqCg" class="link"><li class="latest">[Limbus Company - PV] 3rd Anniversary Event</a><span>Feb 20, 2026</span></sub></li>
+                        <a href="https://youtu.be/WF5wvJjEwVU" class="link"><li class="latest">[New Identity Extraction] Index Proxy Yi Sang</a><span>Feb 19, 2026</span></li>
+                        <a href="https://youtu.be/0HXwT4gefnQ" class="link"><li class="latest">[New Identity Extraction] Pinky Apprentice Sinclair & E.G.O.: Lamp Gregor</a><span>Feb 2, 2026</span></li>
+                        <a href="https://youtu.be/6v2UuzLBMrw" class="link"><li class="latest">[New Identity Extraction] Middle Apprentice Ishmael</a><span>Jan 19, 2026</span></li>
+                    </div>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="characters">
+            <div class="slideshow-wrapper">
+                <div class="portrait-slideshow-container">
+                    <input type="radio" name="portrait" id="portrait1" checked>
+                    <input type="radio" name="portrait" id="portrait2">
+                    <input type="radio" name="portrait" id="portrait3">
+                    <input type="radio" name="portrait" id="portrait4">
+                    <input type="radio" name="portrait" id="portrait5">
+                    <input type="radio" name="portrait" id="portrait6">
+                    <input type="radio" name="portrait" id="portrait7">
+                    <input type="radio" name="portrait" id="portrait8">
+                    <input type="radio" name="portrait" id="portrait9">
+                    <input type="radio" name="portrait" id="portrait10">
+                    <input type="radio" name="portrait" id="portrait11">
+                    <input type="radio" name="portrait" id="portrait12">
+                    <div class="portrait-slides">
+                        <div class="portrait-slide">
+                            <img src="./assets/yisang.png" alt="Portrait 1">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/faust.jpg" alt="Portrait 2">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/don.png" alt="Portrait 3">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/ryoshu.jpg" alt="Portrait 4">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/meursault.jpg" alt="Portrait 5">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/honglu.jpg" alt="Portrait 6">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/heath.jpg" alt="Portrait 7">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/ishmael.jpg" alt="Portrait 8">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/rodya.jpg" alt="Portrait 9">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/sinclair.jpg" alt="Portrait 10">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/outis.jpg" alt="Portrait 11">
+                        </div>
+                        <div class="portrait-slide">
+                            <img src="./assets/gregor.jpg" alt="Portrait 12">
+                        </div>
+                    </div>
+                    <div class="portrait-indicators">
+                        <label for="portrait1" class="portrait-indicator"></label>
+                        <label for="portrait2" class="portrait-indicator"></label>
+                        <label for="portrait3" class="portrait-indicator"></label>
+                        <label for="portrait4" class="portrait-indicator"></label>
+                        <label for="portrait5" class="portrait-indicator"></label>
+                        <label for="portrait6" class="portrait-indicator"></label>
+                        <label for="portrait7" class="portrait-indicator"></label>
+                        <label for="portrait8" class="portrait-indicator"></label>
+                        <label for="portrait9" class="portrait-indicator"></label>
+                        <label for="portrait10" class="portrait-indicator"></label>
+                        <label for="portrait11" class="portrait-indicator"></label>
+                        <label for="portrait12" class="portrait-indicator"></label>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="lore">
+    <div class="lore-container">
+        <!-- Radio buttons for navigation -->
+        <input type="radio" name="lore-slide" id="lore1" checked>
+        <input type="radio" name="lore-slide" id="lore2">
+        <input type="radio" name="lore-slide" id="lore3">
+        <input type="radio" name="lore-slide" id="lore4">
+        <input type="radio" name="lore-slide" id="lore5">
+        <input type="radio" name="lore-slide" id="lore6">
+        <input type="radio" name="lore-slide" id="lore7">
+        <input type="radio" name="lore-slide" id="lore8">
+        <input type="radio" name="lore-slide" id="lore9">
         
-            </section>
-            <section id="characters">
-                
-            </section>
-            <section id="lore">
+        <!-- Slides container -->
+        <div class="lore-slides">
+            <!-- Slide 1 -->
+            <div class="lore-slide">
+                <img src="./assets/city.png" alt="The City and the Nests">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">THE CITY AND THE NESTS</h3>
+                    <p class="lore-description">We understand the unique situation you find yourself in, Executive Manager. Allow us to lay down a number of key facts about our world here.</p>
+                    <p class="lore-description">In case you've become unfamiliar with your surroundings, we live in a massive City, divided into 26 Districts. Each District has a central area called the 'Nest', whose inhabitants are under the protection of a corporate entity overseeing the District, much like a bird brooding its eggs.</p>
+                    <p class="lore-description">Alas, the corporation's protection doesn't extend beyond the Nest's boundaries. The dwellers of the Backstreets have to fend for themselves.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 2 -->
+            <div class="lore-slide">
+                <img src="./assets/wings.png" alt="The Wings">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">THE WINGS</h3>
+                    <p class="lore-description">This term does not refer to a bird's bodily structure.</p>
+                    <p class="lore-description">However, one can't deny that a Wing's role resembles that of a bird caring for its nest.</p>
+                    <p class="lore-description">The 'Wings' are a collective term we use to refer to the 26 biggest conglomerates in the City. These Wings contribute to the quality o life in the City via astounding technological feats known as 'Singularities'. Under the jurisdiction of a Wing, the citizens of each Nest enjoy comfortable and safe lives. However, that changes the moment a Wing is snapped or plucked of its feathers; historically, the fall of a Wing has accompanied events of considerable magnitudes.</p>
+                    <p class="lore-description">In time, a new Wing will rise to fill that vacant spot. In the meantime, though... no one can guarantee your safety in its fallen Nest.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 3 -->
+            <div class="lore-slide">
+                <img src="./assets/lobcorp.png" alt="Lobotomy Corporation">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">LOBOTOMY CORPORATION</h3>
+                    <p class="lore-description">A former Wing that was located in Nest L.</p>
+                    <p class="lore-description">Lobotomy Corporation, or L Corp. (LC) for short, was an energy company that produced an ample supply of power for the City. The corporation has fallen since the 'White Nights and Dark Days' incident, and the spot of Nest L's Wing remains unclaimed to this day. Because the former L Corp's electric grids had encompassed the City, its branches were built in various places. Though these branch facilities have all fallen to ruin with the collapse of the Wing, you should still be able to find valuable goods</p>
+                    <p class="lore-description">Along with... possibly the most dangerous beings you'll face.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 4 -->
+            <div class="lore-slide">
+                <img src="./assets/golden_bough.png" alt="The Golden Boughs">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">THE GOLDEN BOUGHS</h3>
+                    <p class="lore-description">Within the depths of these facilities lie the Golden Boughs, the essence of Lobotomy Corporation's energy production technology... or what's left of it. Its appearance is exactly as the name suggests: a tree branch radiating a golden glow.</p>
+                    <p class="lore-description">Your objective as an Executive Manager is to obtain the Golden Boughs. Of course, any denizen of the City would be attracted by the promise of the infinite possibilities these items possess; the task of retrieval will not be as easy as grabbing goods from a convenience story.</p>
+                    <p class="lore-description">We implore you to collect all the Golden Boughs with prudent decision-making.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 5 -->
+            <div class="lore-slide">
+                <img src="./assets/abnos.png" alt="Abnormalities">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">ABNORMALITIES</h3>
+                    <p class="lore-description">Lobotomy Corporation used to produce energy using creatures they dubbed 'Abnormalities'.</p>
+                     <p class="lore-description">As the term suggests, these peculiar entities ranged from unfathomably bizarre and terrifying creatures to outwardly unremarkable beings capable of causing potentially catastrophic events as a result of incorrect "management" procedures.</p>
+                      <p class="lore-description">After the Wing's unexpected and swift collapse, most of the branches were subject to a burial protocol, trapping those creatures underground alongside the likely-oblivious employees.</p>
+                       <p class="lore-description">By now, the employees have most likely passed away—but Abnormalities don't succumb as easily. You can expect them to still prowl the ruins of these sealed facilities.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 6 -->
+            <div class="lore-slide">
+                <img src="./assets/backstreets.png" alt="The Backstreets">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">THE BACKSTREETS</h3>
+                    <p class="lore-description">Unlike the Nests, these are dangerous regions where your safety cannot be guaranteed. (Although the Nests also come with their own risks.) The Backstreets are spread in, out, and around the Nests like veins throughout the City, though the boundary between the Nest and the Backstreets is clearly drawn. While these areas may seem like lawless lands at first glance, each district of the Backstreets has its own list of taboos, and you can find a rich and diverse set of cultures. Sometimes denizens of the City form organizations of varying size and scope, commonly referred to as Syndicates.</p>
+                    <p class="lore-description">Furthermore... please ensure you remember this next part. No Assistance can be provided to the Executive Manager between 3:13 AM and 4:34 AM, colloquially known as the 'Night in the Backstreets'. Nothing can be done, even for the most urgent of requests.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 7 -->
+            <div class="lore-slide">
+                <img src="./assets/ego.png" alt="E.G.O">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">E.G.O</h3>
+                    <p class="lore-description">Lobotomy Corporation was said to also have possessed technology allowing them to extract weapons and armor from the Abnormalities. It is speculated to be created using a technology that manifests their inner sides in material form, but unfortunately, we were unable to recover any means to replicate it.</p>
+                    <p class="lore-description">Relevant departments predict that your Sinners will be able to manifest E.G.O of their own depending on their course of action. In addition, they expect E.G.O from Abnormalities to be available via emotional attachment.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 8 -->
+            <div class="lore-slide">
+                <img src="./assets/fixers.png" alt="Fixers">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">FIXERS</h3>
+                    <p class="lore-description">Fixers are the all-around handymen of the City, handling their clients' various cases and incidents.</p>
+                    <p class="lore-description">One doesn't simply become a Fixer by declaring to be one; in order to acquire a Fixer license officially, one must rap on the door of an Office authorized by the Associations or visit one of the Associations in person. Furthermore, the license is only the beginning. To rise through the ranks and earn higher Grades, they must prove themselves through trackable performance. (Of course some are uninterested in career advancement altogether.)</p>
+                    <p class="lore-description">While Fixers exist to solve the City's problems, it's no secret that these Fixers can be sources of problems themselves.</p>
+                </div>
+            </div>
+            
+            <!-- Slide 9 -->
+            <div class="lore-slide">
+                <img src="./assets/offices.png" alt="The Associations and Offices">
+                <div class="lore-text-overlay">
+                    <h3 class="lore-title">THE ASSOCIATION AND THE FIXERS</h3>
+                    <p class="lore-description">The Associations are major organizations that supervise and manage Fixers, and the Hana Association is at the center of all Fixer-related affairs. Cases occurring in the City are handed over to the Associations according to their specialties, and they then distribute those cases to the Fixers that are deemed to be best suited for the job.</p>
+                    <p class="lore-description">An Office is similar to an Association in that it's an organized group of Fixers, but it's usually far smaller in scale. Some Offices are directly affiliated with an Association that issues tasks to them, while others seek clients and requests on their own. As some aptly put it: "There are as many Offices as there are Fixers." A Great number of Offices exist in the City, seeing constant waves of new entries as well as those sucked up by metaphorical riptides.</p>
+                </div>
+            </div>
+        </div>
         
-            </section>
+        <!-- Navigation arrows -->
+        <div class="lore-navigation">
+            <label for="lore9" class="lore-prev" id="lore-prev1">❮</label>
+            <label for="lore1" class="lore-prev" id="lore-prev2">❮</label>
+            <label for="lore2" class="lore-prev" id="lore-prev3">❮</label>
+            <label for="lore3" class="lore-prev" id="lore-prev4">❮</label>
+            <label for="lore4" class="lore-prev" id="lore-prev5">❮</label>
+            <label for="lore5" class="lore-prev" id="lore-prev6">❮</label>
+            <label for="lore6" class="lore-prev" id="lore-prev7">❮</label>
+            <label for="lore7" class="lore-prev" id="lore-prev8">❮</label>
+            <label for="lore8" class="lore-prev" id="lore-prev9">❮</label>
+            
+            <label for="lore2" class="lore-next" id="lore-next1">❯</label>
+            <label for="lore3" class="lore-next" id="lore-next2">❯</label>
+            <label for="lore4" class="lore-next" id="lore-next3">❯</label>
+            <label for="lore5" class="lore-next" id="lore-next4">❯</label>
+            <label for="lore6" class="lore-next" id="lore-next5">❯</label>
+            <label for="lore7" class="lore-next" id="lore-next6">❯</label>
+            <label for="lore8" class="lore-next" id="lore-next7">❯</label>
+            <label for="lore9" class="lore-next" id="lore-next8">❯</label>
+            <label for="lore1" class="lore-next" id="lore-next9">❯</label>
+        </div>
+        
+        <!-- Indicators -->
+        <div class="lore-indicators">
+            <label for="lore1" class="lore-dot"></label>
+            <label for="lore2" class="lore-dot"></label>
+            <label for="lore3" class="lore-dot"></label>
+            <label for="lore4" class="lore-dot"></label>
+            <label for="lore5" class="lore-dot"></label>
+            <label for="lore6" class="lore-dot"></label>
+            <label for="lore7" class="lore-dot"></label>
+            <label for="lore8" class="lore-dot"></label>
+            <label for="lore9" class="lore-dot"></label>
+        </div>
+    </div>
+</section>
         </div>
     </main>
+    <footer>
+        <p>This website is for educational purposes only.</p>
+    </footer>
 </body>
 </html>
