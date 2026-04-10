@@ -1,0 +1,123 @@
+/* ==========================================================================
+   LANDING.CSS
+   Minimal styles for Landing page
+   ========================================================================== */
+
+.landing-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-xxl) var(--spacing-xl);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Landing Header */
+.landing-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xxl);
+}
+
+.site-title {
+  font-size: var(--font-size-xxl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.site-subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-secondary);
+  font-weight: normal;
+}
+
+/* Landing Navigation */
+.landing-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.landing-nav-secondary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+/* Navigation Buttons */
+.nav-btn {
+  display: block;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Primary button (Planner) */
+.nav-btn--primary {
+  padding: var(--spacing-xl);
+  border-width: 2px;
+  background-color: var(--color-bg-elevated);
+}
+
+.nav-btn--primary:hover {
+  background-color: var(--color-accent);
+}
+
+.nav-btn--primary .nav-btn-label {
+  font-size: var(--font-size-xl);
+  color: var(--color-accent);
+}
+
+.nav-btn--primary:hover .nav-btn-label {
+  color: var(--color-text-primary);
+}
+
+/* Secondary buttons */
+.nav-btn--secondary .nav-btn-label {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+}
+
+/* Button label and description */
+.nav-btn-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.nav-btn-desc {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+}
+
+/* Media queries */
+@media (min-width: 1440px) {
+  .landing-container {
+    max-width: 1000px;
+  }
+  
+  .site-title {
+    font-size: 56px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .landing-container {
+    max-width: 1200px;
+  }
+  
+  .site-title {
+    font-size: 64px;
+  }
+}

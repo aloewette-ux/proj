@@ -1,0 +1,312 @@
+:root {
+  --color-bg-base:        #493c35; /* Main background */
+  --color-bg-surface:     #3d2e26; /* Containers */
+  --color-bg-elevated:    #6e5c44; /* Hover, popups*/
+
+  /* Text colors */
+  --color-text-primary:   #e8e8e8; /* Main body text */
+  --color-text-secondary: #c7c7c7; /* Subtitles, labels, descriptions */
+  --color-text-muted:     #949494; /* Placeholder text, disabled states */
+
+  /* Accent colors */
+  --color-accent:         #bea86b; /* Primary accent, links, active states */
+  --color-accent-hover:   #9b6605; /* Accent hover state */
+
+  /* Border colors */
+  --color-border:         #c4c4c4; /* General borders and dividers */
+
+  /* Typography */
+  --font-primary:         'Georgia', serif;
+  --font-size-base:       16px;
+  --font-size-sm:         14px;
+  --font-size-lg:         20px;
+  --font-size-xl:         28px;
+  --font-size-xxl:        40px;
+  --line-height-base:     1.6;
+
+  /* Spacing */
+  --spacing-xs:           4px;
+  --spacing-sm:           8px;
+  --spacing-md:           16px;
+  --spacing-lg:           24px;
+  --spacing-xl:           40px;
+  --spacing-xxl:          64px;
+
+  /* Border radius */
+  --radius-sm:            4px;
+  --radius-md:            8px;
+  --radius-lg:            12px;
+
+  /* Layout */
+  --max-width:            1200px; /* Max content width at 1280px default */
+  --navbar-height:        60px;
+}
+
+
+/* ==========================================================================
+   RESET & BOX MODEL
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* ==========================================================================
+   BASE STYLES
+   ========================================================================== */
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg-base);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  line-height: var(--line-height-base);
+  min-height: 100vh;
+}
+
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+h1 {
+  font-size: var(--font-size-xxl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+p {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-sm);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+
+/* ==========================================================================
+   NAVBAR
+   - Shared across all pages except the landing page
+   ========================================================================== */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--navbar-height);
+  padding: 0 var(--spacing-xl);
+  background-color: var(--color-bg-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-logo {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--color-text-primary);
+}
+
+.navbar-logo:hover {
+  color: var(--color-accent-hover);
+}
+
+.navbar-links {
+  display: flex;
+  gap: var(--spacing-lg);
+  list-style: none;
+}
+
+.navbar-link {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: var(--color-text-primary);
+}
+
+/* Active page link in navbar */
+.navbar-link--active {
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+
+/* ==========================================================================
+   PAGE HEADER
+   - Shared page title and description block
+   ========================================================================== */
+.page-header {
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: var(--spacing-lg);
+}
+
+.page-title {
+  font-size: var(--font-size-xxl);
+  color: var(--color-text-primary);
+}
+
+.page-desc {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+}
+
+
+/* ==========================================================================
+   FILTER BAR
+   - Shared filter bar used on gift, identity, and planner pages
+   ========================================================================== */
+.filter-bar {
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.filter-bar-title {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+}
+
+.filter-group-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  min-width: 90px;
+}
+
+.filter-group-buttons,
+.filter-bar-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+/* Filter button base style */
+.filter-btn {
+  background-color: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+}
+
+/* Active/selected filter button */
+.filter-btn--active {
+  background-color: var(--color-accent);
+  color: var(--color-text-primary);
+  border-color: var(--color-accent);
+}
+
+
+/* ==========================================================================
+   PLACEHOLDER IMAGE SHAPE
+   - Represents images and icons before real assets are added
+   ========================================================================== */
+.placeholder-img {
+  background-color: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+/* Rectangular placeholder for theme pack images */
+.placeholder-img--rect {
+  aspect-ratio: 9 / 16;
+}
+
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+/* Constrain content to max width and center it */
+.content-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--spacing-xl);
+}
+
+/* Visually hidden but accessible */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   MEDIA QUERY — 1440px
+   ========================================================================== */
+@media (min-width: 1440px) {
+  :root {
+    --max-width: 1360px;
+    --font-size-base: 17px;
+    --font-size-xxl: 48px;
+  }
+}
+
+
+/* ==========================================================================
+   MEDIA QUERY — 1920px
+   ========================================================================== */
+@media (min-width: 1920px) {
+  :root {
+    --max-width: 1600px;
+    --font-size-base: 18px;
+    --font-size-xxl: 56px;
+    --spacing-xl: 56px;
+  }
+}
