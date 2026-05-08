@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="jquery-4.0.0.min.js"></script>
+    <script src="exam.js"></script>
+    <title>Midterm Exam</title>
+</head>
+<body>
+    <form>
+        <label for="name">Student Name: </label>
+        <input type="text" id="name">
+        <br><br>
+        <label for="quiz">Quiz Score: </label>
+        <input type="text" id="quiz">
+        <br><br>
+        <label for="midterm">Midterm Score: </label>
+        <input type="text" id="midterm">
+        <br><br>
+        <label for="final">Final Project Score: </label>
+        <input type="text" id="final">
+        <br><br>
+        <button id="submit" onclick=form()><span>Calculate</span></button>
+        <button id="reset"><span>Reset</span></button>
+        <br><br>
+        <div>
+            <p><strong>Final Result:</strong></p>
+            <span id="result"></span>
+        </div>
+
+    </form>
+</body>
+</html>

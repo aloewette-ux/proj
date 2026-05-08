@@ -1,4 +1,4 @@
-/* GIFTS LAYOUT */
+/* Gift section page layout */
 .gifts-layout {
   display: flex;
   flex-direction: column;
@@ -10,19 +10,18 @@
 }
 
 
-/* FILTER BAR */
+/* Filter back with a fixed position on the top of the page */
 .filter-bar {
   flex-shrink: 0;
   padding: var(--spacing-md) 0;
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-lg);
   border-bottom: 1px solid var(--color-border);
-  margin-bottom: var(--spacing-md);
-  margin-top: var(--spacing-md);
-  padding-left: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 .filter-bar-title {
   font-size: var(--font-size-sm);
-  font-family: 'Mikodacs';
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -32,7 +31,7 @@
 .filter-group {
   display: flex;
   align-items: flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-sm);
 }
@@ -40,7 +39,6 @@
 .filter-group-label {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
-  font-family: 'Mikodacs';
   min-width: 90px;
   flex-shrink: 0;
   padding-top: 4px;
@@ -54,41 +52,7 @@
 }
 
 
-/* FILTER BUTTONS */
-.filter-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  background-color: var(--color-bg-elevated);
-  color: var(--color-text-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: var(--spacing-xs) var(--spacing-sm);
-  font-size: var(--font-size-sm);
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.filter-btn:hover {
-  background-color: var(--color-accent);
-  color: var(--color-text-primary);
-}
-
-.filter-btn--active {
-  background-color: var(--color-accent);
-  color: var(--color-text-primary);
-  border-color: var(--color-accent);
-}
-
-.filter-btn-icon {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-
-/* GIFT GRID */
+/* A container grid for the gifts; scrollable implementation in this grid and not the main page */
 .gift-grid {
   flex: 1;
   overflow-y: auto;
@@ -99,10 +63,11 @@
   align-content: start;
   background-color: var(--color-bg-surface);
   border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
 }
 
 
-/* GIFT CARD */
+/* A container for each gift */
 .gift-card {
   display: flex;
   flex-direction: column;
@@ -122,6 +87,7 @@
   justify-content: center;
 }
 
+/* Source path image of the gifts' border frame */
 .gift-card-image {
   max-width: 8em;
   min-width: 8em;
@@ -139,21 +105,21 @@
   border-radius: var(--radius-sm);
 }
 
+/* Status type icon of the gift */
 .gift-card-status-icon {
   position: absolute;
-  bottom: 0.4em;
-  right: 0.5em;
+  bottom: 0.45em;
+  right: 0.6em;
   width: 20px;
   height: 20px;
   object-fit: contain;
   background-color: rgba(0, 0, 0, 0.45);
-  border-radius: var(--radius-sm);
   padding: 2px;
 }
 
 .gift-card-name {
-  font-size: var(--font-size-md);
-  font-family: 'Mikodacs';
+  font-family: var(--font-gift-name);
+  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   text-align: center;
   margin-top: var(--spacing-xs);
@@ -161,7 +127,7 @@
 }
 
 
-/* GIFT POPUP */
+/* Pop up box for showing the gift's details and description upon hovering */
 .gift-popup {
   position: fixed;
   z-index: 1000;
@@ -169,41 +135,101 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: var(--spacing-md);
-  width: 20em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-}
-
-.gift-popup-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--spacing-sm) var(--spacing-md);
+  width: 340px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
 .gift-popup-name {
+  font-family: var(--font-gift-name);
   font-size: var(--font-size-lg);
   color: var(--color-text-primary);
   margin-bottom: var(--spacing-xs);
-  grid-column: 1 / -1;
 }
 
 .gift-popup-rarity {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   margin-bottom: var(--spacing-sm);
-  grid-column: 1 / -1;
 }
 
 .gift-popup-tags,
-.gift-popup-recipe,
 .gift-popup-pack {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
   line-height: 1.4;
 }
 
+.gift-popup-recipe {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
 
-/* NO RESULTS */
+.gift-popup-recipe-label {
+  font-weight: bold;
+  margin-bottom: var(--spacing-xs);
+}
+
+.popup-fusion-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-xs);
+  margin-top: var(--spacing-xs);
+}
+
+.popup-fusion-separator {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+  padding: 0 2px;
+}
+
+.popup-fusion-gift {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 56px;
+}
+
+.popup-fusion-gift-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg-surface);
+  display: block;
+}
+
+.popup-fusion-gift .placeholder-img {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+}
+
+.popup-fusion-gift-name {
+  font-family: var(--font-gift-name);
+  font-size: 10px;
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.gift-popup-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin-top: var(--spacing-sm);
+  padding-top: var(--spacing-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+
+/* Default scenario when no gifts align with filters */
 .no-results {
   text-align: center;
   color: var(--color-text-muted);
@@ -213,23 +239,17 @@
 }
 
 
-/* MEDIA QUERIES */
+/* Media queries */
 @media (min-width: 1440px) {
   .gift-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   }
-  .gift-card-status-icon {
-    width: 22px;
-    height: 22px;
-  }
+  .gift-card-status-icon { width: 22px; height: 22px; }
 }
 
 @media (min-width: 1920px) {
   .gift-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
-  .gift-card-status-icon {
-    width: 24px;
-    height: 24px;
-  }
+  .gift-card-status-icon { width: 24px; height: 24px; }
 }

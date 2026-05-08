@@ -1,11 +1,15 @@
 let activeFloorFilter = null;
+let hidePopupTimer = null;
 
+/* Initialization of the theme pack data, filter buttons, and the theme pack grid */
 async function init() {
   await loadData();
   renderFloorFilterButtons();
   renderPackGrid();
+  initPopupHoverBridge();
 }
 
+/* Creates the filter buttons and its functionality */
 function renderFloorFilterButtons() {
   const filterBar = document.getElementById('filterBar');
   if (!filterBar) return;
@@ -17,12 +21,7 @@ function renderFloorFilterButtons() {
 
   const buttonContainer = document.getElementById('floorFilterButtons');
 
-  const floorRanges = [
-    { label: 'Floors 1-5',   value: '1-5'   },
-    { label: 'Floors 6-10',  value: '6-10'  },
-    { label: 'Floors 11-15', value: '11-15' }
-  ];
-
+  /* 'All Floors' button */
   const allBtn = document.createElement('button');
   allBtn.className = 'filter-btn filter-btn--active';
   allBtn.textContent = 'All Floors';
@@ -31,10 +30,28 @@ function renderFloorFilterButtons() {
   });
   buttonContainer.appendChild(allBtn);
 
-  floorRanges.forEach(range => {
+  /* Individual floor buttons for floor 1 through floor 5 */
+  for (let floor = 1; floor <= 5; floor++) {
+    const btn = document.createElement('button');
+    btn.className = 'filter-btn';
+    btn.textContent = `Floor ${floor}`;
+    btn.dataset.floor = floor;
+    btn.addEventListener('click', () => {
+      setFloorFilter(floor, btn, buttonContainer);
+    });
+    buttonContainer.appendChild(btn);
+  }
+
+  /* Group buttons for floors 6-10 and floors 11-15 */
+  const groupRanges = [
+    { label: 'Floors 6-10', value: '6-10' },
+    { label: 'Floors 11-15', value: '11-15' }
+  ];
+  groupRanges.forEach(range => {
     const btn = document.createElement('button');
     btn.className = 'filter-btn';
     btn.textContent = range.label;
+    btn.dataset.value = range.value;
     btn.addEventListener('click', () => {
       setFloorFilter(range.value, btn, buttonContainer);
     });
@@ -42,6 +59,7 @@ function renderFloorFilterButtons() {
   });
 }
 
+/* Updates the filter visuals depending on what filter being activated */
 function setFloorFilter(value, clickedBtn, container) {
   container.querySelectorAll('.filter-btn').forEach(b =>
     b.classList.remove('filter-btn--active')
@@ -51,12 +69,13 @@ function setFloorFilter(value, clickedBtn, container) {
   renderPackGrid();
 }
 
+/* Updates the data being processed according to the filters */
 function filterPacks() {
   if (!activeFloorFilter) return packsData;
 
   return packsData.filter(pack => {
-    if (activeFloorFilter === '1-5') {
-      return pack.floors.some(f => f >= 1 && f <= 4);
+    if (typeof activeFloorFilter === 'number') {
+      return pack.floors.includes(activeFloorFilter);
     } else if (activeFloorFilter === '6-10') {
       return pack.floors.includes(5);
     } else if (activeFloorFilter === '11-15') {
@@ -66,6 +85,7 @@ function filterPacks() {
   });
 }
 
+/* Rendering the grid for the pack cards */
 function renderPackGrid() {
   const grid = document.getElementById('packGrid');
   grid.innerHTML = '';
@@ -83,6 +103,7 @@ function renderPackGrid() {
   });
 }
 
+/* Creates the theme pack card */
 function createPackCard(pack) {
   const card = document.createElement('div');
   card.className = 'pack-card';
@@ -100,19 +121,15 @@ function createPackCard(pack) {
     img.parentNode.replaceChild(placeholder, img);
   };
 
-  const name = document.createElement('p');
-  name.className = 'pack-card-name';
-  name.textContent = pack.name;
-
   card.appendChild(img);
-  card.appendChild(name);
 
-  card.addEventListener('mouseenter', (e) => showPackPopup(pack, e));
-  card.addEventListener('mouseleave', hidePackPopup);
+  card.addEventListener('mouseenter', (e) => { cancelHidePopup(); showPackPopup(pack, e); });
+  card.addEventListener('mouseleave', scheduleHidePopup);
 
   return card;
 }
 
+/* Function for the placeholder base color in case of errors */
 function getFloorColor(floors) {
   const minFloor = Math.min(...floors);
   const colors = {
@@ -122,6 +139,29 @@ function getFloorColor(floors) {
   return colors[minFloor] || '#4a4a4a';
 }
 
+/* Pop up box initialization */
+function initPopupHoverBridge() {
+  const popup = document.getElementById('packPopup');
+  if (!popup) return;
+  popup.addEventListener('mouseenter', cancelHidePopup);
+  popup.addEventListener('mouseleave', scheduleHidePopup);
+}
+
+function scheduleHidePopup() {
+  hidePopupTimer = setTimeout(() => {
+    const popup = document.getElementById('packPopup');
+    if (popup) popup.hidden = true;
+  }, 80);
+}
+
+function cancelHidePopup() {
+  if (hidePopupTimer !== null) {
+    clearTimeout(hidePopupTimer);
+    hidePopupTimer = null;
+  }
+}
+
+/* Pop up box when hovering on a pack, displaying the relevant information of that pack */
 function showPackPopup(pack, event) {
   const popup = document.getElementById('packPopup');
 
@@ -168,7 +208,7 @@ function showPackPopup(pack, event) {
 
       const giftName = document.createElement('p');
       giftName.className = 'popup-gift-card-name';
-      giftName.textContent = gift.name;
+      giftName.innerHTML = colorizeKeywords ? colorizeKeywords(gift.name) : gift.name;
 
       giftCard.appendChild(giftImg);
       giftCard.appendChild(giftName);
@@ -178,25 +218,39 @@ function showPackPopup(pack, event) {
     giftsDiv.appendChild(giftsGrid);
   }
 
+  /* Position boundary logic to not overflow past the website */
   const offsetX = 12;
   const offsetY = 12;
-  popup.style.left = (event.clientX + offsetX) + 'px';
-  popup.style.top = (event.clientY + offsetY) + 'px';
+  let left = event.clientX + offsetX;
+  let top = event.clientY + offsetY;
+
+  popup.style.left = left + 'px';
+  popup.style.top = top + 'px';
   popup.hidden = false;
 
   const rect = popup.getBoundingClientRect();
-  const vw = window.innerWidth;
-  const vh = window.innerHeight;
+  const viewportWidth = window.innerWidth;
+  const viewportHeight = window.innerHeight;
 
-  if (rect.right > vw) {
-    popup.style.left = (event.clientX - rect.width - offsetX) + 'px';
+  if (rect.right > viewportWidth) {
+    left = event.clientX - rect.width - offsetX;
   }
-  if (rect.bottom > vh) {
-    popup.style.top = (event.clientY - rect.height - offsetY) + 'px';
+  if (left < 0) {
+    left = offsetX;
   }
+  if (rect.bottom > viewportHeight) {
+    top = event.clientY - rect.height - offsetY;
+  }
+  if (top < 0) {
+    top = offsetY;
+  }
+
+  popup.style.left = left + 'px';
+  popup.style.top = top + 'px';
 }
 
 function hidePackPopup() {
+  cancelHidePopup();
   document.getElementById('packPopup').hidden = true;
 }
 

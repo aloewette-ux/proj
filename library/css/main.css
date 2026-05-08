@@ -1,22 +1,33 @@
+/* Custom font */
+@font-face {
+  font-family: 'Mikodacs';
+  src: url('../assets/fonts/Mikodacs.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Main directory of shared CSS values of the whole website */
 :root {
-  --color-bg-base:        #493c35; /* Main background */
-  --color-bg-surface:     #3d2e26; /* Containers */
-  --color-bg-elevated:    #6e5c44; /* Hover, popups*/
+  /* Background colors */
+  --color-bg-base:        #332a25; /* Main page background */
+  --color-bg-surface:     #47362c; /* Cards, panels, containers */
+  --color-bg-elevated:    #6e5c44; /* Hover states, popups */
 
   /* Text colors */
   --color-text-primary:   #e8e8e8; /* Main body text */
-  --color-text-secondary: #c7c7c7; /* Subtitles, labels, descriptions */
+  --color-text-secondary: #afafaf; /* Subtitles, labels, descriptions */
   --color-text-muted:     #949494; /* Placeholder text, disabled states */
 
   /* Accent colors */
-  --color-accent:         #bea86b; /* Primary accent, links, active states */
-  --color-accent-hover:   #9b6605; /* Accent hover state */
+  --color-accent:         #ad915b; /* Primary accent, links, active states */
+  --color-accent-hover:   #af8b41; /* Accent on hover */
 
   /* Border colors */
-  --color-border:         #c4c4c4; /* General borders and dividers */
+  --color-border:         #754c30; /* General borders and dividers */
 
   /* Typography */
   --font-primary:         'Georgia', serif;
+  --font-gift-name:       'Mikodacs', 'Georgia', serif;
   --font-size-base:       16px;
   --font-size-sm:         14px;
   --font-size-lg:         20px;
@@ -38,14 +49,10 @@
   --radius-lg:            12px;
 
   /* Layout */
-  --max-width:            1200px; /* Max content width at 1280px default */
+  --max-width:            1200px;
   --navbar-height:        60px;
 }
 
-
-/* ==========================================================================
-   RESET & BOX MODEL
-   ========================================================================== */
 *,
 *::before,
 *::after {
@@ -54,10 +61,6 @@
   padding: 0;
 }
 
-
-/* ==========================================================================
-   BASE STYLES
-   ========================================================================== */
 html {
   font-size: var(--font-size-base);
   scroll-behavior: smooth;
@@ -71,10 +74,29 @@ body {
   min-height: 100vh;
 }
 
+/* Background images for the planner, gift, and pack section */
+.page-gifts {
+  background-image: url('../html/assets/images/background/bg2.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
 
-/* ==========================================================================
-   TYPOGRAPHY
-   ========================================================================== */
+.page-packs {
+  background-image: url('../html/assets/images/background/bg1.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.page-planner {
+  background-image: url('../html/assets/images/background/bg3.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* Directory for shared CSS typography */
 h1 {
   font-size: var(--font-size-xxl);
   color: var(--color-text-primary);
@@ -109,10 +131,7 @@ a:hover {
 }
 
 
-/* ==========================================================================
-   NAVBAR
-   - Shared across all pages except the landing page
-   ========================================================================== */
+/* Navigation bar */
 .navbar {
   display: flex;
   align-items: center;
@@ -133,7 +152,7 @@ a:hover {
 }
 
 .navbar-logo:hover {
-  color: var(--color-accent-hover);
+  color: var(--color-accent);
 }
 
 .navbar-links {
@@ -151,20 +170,14 @@ a:hover {
 }
 
 .navbar-link:hover {
-  color: var(--color-text-primary);
+  color: var(--color-accent);
 }
 
-/* Active page link in navbar */
 .navbar-link--active {
   color: var(--color-accent);
   border-bottom: 2px solid var(--color-accent);
 }
 
-
-/* ==========================================================================
-   PAGE HEADER
-   - Shared page title and description block
-   ========================================================================== */
 .page-header {
   padding: var(--spacing-xl) 0 var(--spacing-lg);
   border-bottom: 1px solid var(--color-border);
@@ -182,10 +195,7 @@ a:hover {
 }
 
 
-/* ==========================================================================
-   FILTER BAR
-   - Shared filter bar used on gift, identity, and planner pages
-   ========================================================================== */
+/* Filter bar base design */
 .filter-bar {
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border);
@@ -200,29 +210,42 @@ a:hover {
   margin-bottom: var(--spacing-sm);
 }
 
+/* Filter button grouping and wrapping */
 .filter-group {
   display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-wrap: nowrap;
   gap: var(--spacing-sm);
   margin-bottom: var(--spacing-sm);
 }
 
+/* Applies the same exact offset for the buttons */
 .filter-group-label {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
   min-width: 90px;
+  flex-shrink: 0;
+  padding-top: 4px;
 }
 
-.filter-group-buttons,
+.filter-group-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  flex: 1;
+}
+
 .filter-bar-buttons {
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-xs);
 }
 
-/* Filter button base style */
+/* Filter button */
 .filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
   background-color: var(--color-bg-elevated);
   color: var(--color-text-secondary);
   border: 1px solid var(--color-border);
@@ -230,26 +253,63 @@ a:hover {
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: var(--font-size-sm);
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .filter-btn:hover {
   background-color: var(--color-accent);
   color: var(--color-text-primary);
+  border-color: var(--color-accent);
 }
 
-/* Active/selected filter button */
 .filter-btn--active {
   background-color: var(--color-accent);
   color: var(--color-text-primary);
   border-color: var(--color-accent);
 }
 
+/* Icon beside the button label, inside the button */
+.filter-btn-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 
-/* ==========================================================================
-   PLACEHOLDER IMAGE SHAPE
-   - Represents images and icons before real assets are added
-   ========================================================================== */
+/* Designated colors for each status type keywords */
+
+/* Wrath, Bleed */
+.kw-red    { color: #e06060; }
+
+/* Lust, Burn */
+.kw-orange { color: #d4882a; }
+
+/* Sloth, Tremor */
+.kw-yellow { color: #c8a820; }
+
+/* Gluttony */
+.kw-green  { color: #52b068; }
+
+/* Rupture */
+.kw-teal   { color: #30b09a; }
+
+/* Gloom, Charge */
+.kw-cyan   { color: #30aac4; }
+
+/* Pride, Sinking */
+.kw-blue   { color: #5090d0; }
+
+/* Envy */
+.kw-violet { color: #9060c4; }
+
+/* Poise */
+.kw-gray   { color: #c7c7c7; }
+
+/* Slash, Pierce, Blunt */
+.kw-brown  { color: #ffbb8d; }
+
+
+/* Placeholder image with base colors, in case image fail to load */
 .placeholder-img {
   background-color: var(--color-bg-elevated);
   border: 1px solid var(--color-border);
@@ -259,24 +319,16 @@ a:hover {
   aspect-ratio: 1 / 1;
 }
 
-/* Rectangular placeholder for theme pack images */
 .placeholder-img--rect {
   aspect-ratio: 9 / 16;
 }
 
-
-/* ==========================================================================
-   UTILITY CLASSES
-   ========================================================================== */
-
-/* Constrain content to max width and center it */
 .content-wrapper {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--spacing-xl);
 }
 
-/* Visually hidden but accessible */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -286,10 +338,12 @@ a:hover {
   white-space: nowrap;
 }
 
+.titleFlair {
+  color: var(--color-accent);
+}
 
-/* ==========================================================================
-   MEDIA QUERY — 1440px
-   ========================================================================== */
+
+/* Media queries */
 @media (min-width: 1440px) {
   :root {
     --max-width: 1360px;
@@ -298,10 +352,6 @@ a:hover {
   }
 }
 
-
-/* ==========================================================================
-   MEDIA QUERY — 1920px
-   ========================================================================== */
 @media (min-width: 1920px) {
   :root {
     --max-width: 1600px;
